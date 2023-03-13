@@ -1,0 +1,17 @@
+<div #chart></div>
+<ng-template #tooltip></ng-template>
+
+<div class="tlui-chart-legend" *ngIf="legend">
+  <tlui-legend-label
+    *ngFor="let label of layerLabels"
+    [title]="label.data.title"
+    [color]="label.data.color"
+    [type]="label.data.type"
+    [inactive]="label.data.inactive"
+    [options]="label.data.options"
+    (inactiveChange)="onLayerInactivityChange(label.layer, $event)"
+    (optionSelectionChange)="onLabelOptionSelectionChange(label.layer, $event)"
+  ></tlui-legend-label>
+</div>
+
+<ng-content select="tlui-smart-scroll"></ng-content>

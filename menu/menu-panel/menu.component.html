@@ -1,0 +1,9 @@
+<ng-template>
+  <div
+    class="container effect-style-shadows-focused-button"
+    (click)="close.emit('click')"
+    [@transformMenu]="panelAnimationState"
+  >
+    <ng-content></ng-content>
+  </div>
+</ng-template>

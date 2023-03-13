@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+::ng-deep {
+  .selection {
+    stroke-width: 0 !important;
+    fill: #ed1a3a !important;
+    opacity: 0.8;
+  }
+
+  .handle {
+    fill: #ed1a3a !important;
+    width: 4px;
+  }
+
+  .prev-line {
+    fill: transparent;
+    stroke: var(--color-index-fact-or-low);
+    stroke-width: 2;
+  }
+}
+
+

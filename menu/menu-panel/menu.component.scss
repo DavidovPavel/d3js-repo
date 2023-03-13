@@ -1,0 +1,25 @@
+@import "../../../styles/variables";
+@import "../../../styles/packages/scrolling/mixins";
+
+:host {
+  display: block;
+  margin-top: 8px;
+}
+
+.container {
+  background: $bg-special;
+  border: 1px solid $br-stroke;
+  border-radius: 4px;
+  padding: 8px 0 4px;
+
+  min-width: 80px;
+  min-height: 18px;
+  max-width: 260px;
+  max-height: 400px;
+
+  @include hover-vertical-scroll(
+    $scrollbar-margin-x: 2px,
+    $scrollbar-margin-y: 2px
+  );
+
+}

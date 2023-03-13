@@ -1,0 +1,28 @@
+<div class="tlui-chart-popup">
+  <div class="tlui-chart-popup__header" *ngIf="title">{{ title }}</div>
+
+  <table class="tlui-chart-popup__list">
+    <ng-container *ngFor="let group of data">
+      <tr>
+        <td colspan="2">
+          <div class="tlui-chart-popup__delimeter"></div>
+        </td>
+      </tr>
+      <ng-container *ngFor="let row of group">
+        <tr class="tlui-chart-popup__list-item" *ngIf="!row.hidden">
+          <td class="tlui-chart-popup__value">{{ row.value | number }}</td>
+          <td class="tlui-chart-popup__label">
+            <span [style.color]="row.color">
+              <ng-container *ngIf="row.type === 'line'"> &#9644; </ng-container>
+              <ng-container *ngIf="row.type === 'bar'"> &#9724; </ng-container>
+              <ng-container *ngIf="row.type === 'dashed-line'">
+                &#9481;
+              </ng-container>
+            </span>
+            <span>{{ row.title }}</span>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </table>
+</div>

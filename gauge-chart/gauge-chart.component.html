@@ -1,0 +1,17 @@
+<tl-widget-header-new
+  [uniqId]="widgetUniqId"
+  [widgetTitle]="widgetTitle"
+  icon="tluiIconChartDiagramPie"
+></tl-widget-header-new>
+
+<div class="container">
+  <ng-container *ngIf="current$ | async as current; else loading">
+    <tl-chart-pie
+      *ngFor="let item of current; trackBy: trackBy"
+      [width]="width/current.length"
+      [height]="height"
+      [data]="item"
+    ></tl-chart-pie>
+  </ng-container>
+  <ng-template #loading><tlui-spinner></tlui-spinner></ng-template>
+</div>

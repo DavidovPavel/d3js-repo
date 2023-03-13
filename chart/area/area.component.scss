@@ -1,0 +1,10 @@
+::ng-deep {
+  .label {
+    fill: var(--color-text-main-and-axis-labels);
+  }
+
+  .label-day {
+    fill: var(--color-text-optional-color);
+    font-size: 9px;
+  }
+}

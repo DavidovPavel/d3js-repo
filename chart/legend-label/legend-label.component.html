@@ -1,0 +1,49 @@
+<label
+  class="tlui-chart-legend-label"
+  [class.tlui-chart-legend-label--opened]="isOpened"
+  [class.tlui-chart-legend-label--inactive]="inactive"
+  cdkOverlayOrigin
+  #origin="cdkOverlayOrigin"
+>
+  <span [style.color]="color">
+    <ng-container *ngIf="type === 'line'"> &#9644; </ng-container>
+    <ng-container *ngIf="type === 'bar'"> &#9724; </ng-container>
+    <ng-container *ngIf="type === 'dashed-line'"> &#9481; </ng-container>
+  </span>
+  {{ title }}
+  <svg-icon
+    *ngIf="options.length"
+    [src]="isOpened ? 'tluiIconArrowUpSimple' : 'tluiIconArrowDownSimple'"
+    class="tlui-icon--xs"
+    [class.tlui-text--info]="isOpened"
+  ></svg-icon>
+</label>
+
+<ng-template
+  #overlay="cdkConnectedOverlay"
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="isOpened"
+  [cdkConnectedOverlayFlexibleDimensions]="false"
+  [cdkConnectedOverlayLockPosition]="false"
+  [cdkConnectedOverlayPositions]="positions"
+  [cdkConnectedOverlayHasBackdrop]="false"
+  (overlayOutsideClick)="isOpened = false"
+>
+  <div
+    class="tlui-chart-popup tlui-chart-popup--legend"
+    (mouseleave)="leave$.next()"
+    (mouseenter)="popupEnter$.next()"
+  >
+    <tlui-checkbox
+      *ngFor="let option of options"
+      [ngModel]="option.selected"
+      (ngModelChange)="onOptionToggle($event, option)"
+    >
+      <span [style.color]="option.color">
+        {{ option.title }}
+      </span>
+    </tlui-checkbox>
+  </div>
+</ng-template>
+<ng-container *ngIf="stream$ | async"></ng-container>

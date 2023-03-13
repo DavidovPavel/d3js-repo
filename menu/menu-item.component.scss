@@ -1,0 +1,16 @@
+@import "../../styles/variables";
+
+:host {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  color: map-get($palette, accent);
+  padding: 10px 18px;
+  margin-right: 8px;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color-corporate-logo);
+  }
+}

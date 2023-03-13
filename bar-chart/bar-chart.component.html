@@ -1,0 +1,69 @@
+<tl-widget-header-new
+  [uniqId]="widgetUniqId"
+  [widgetTitle]="widgetTitle"
+  icon="tluiIconChartColumns"
+></tl-widget-header-new>
+
+<div #container class="container" (mousedown)="$event.stopPropagation()" (touchstart)="$event.stopPropagation()">
+  <ng-container *ngIf="current$ | async as current; else loading">
+    <ng-container *ngTemplateOutlet="this[current]"></ng-container>
+  </ng-container>
+  <ng-template #loading><tlui-spinner></tlui-spinner></ng-template>
+</div>
+
+<ng-template #curveMonotoneX>
+  <tlui-chart [height]="height" [width]="width">
+    <tlui-axis [max]="data.length" [primary]="true" name="x" position="bottom" type="number"></tlui-axis>
+    <tlui-axis [min]="0" [ticks]="5" name="y" position="left" type="number"></tlui-axis>
+    <tlui-axis-lines axis="x"></tlui-axis-lines>
+    <tlui-axis-lines axis="y"></tlui-axis-lines>
+    <tlui-data-layer
+      [data]="data"
+      [(hiddenPosition)]="hidden"
+      [groupNames]="['plan', 'predict', 'fact']"
+      [showValues]="true"
+      axis="y"
+      [caption]="widgetTitle"
+      dynamics="line"
+      tluiBars
+      valuePosition="above"
+    >
+    </tlui-data-layer>
+  </tlui-chart>
+</ng-template>
+
+<ng-template #curveLinear>
+  <tlui-chart [height]="height" [width]="width">
+    <tlui-axis [max]="data.length" [primary]="true" name="x" position="bottom" type="number"></tlui-axis>
+    <tlui-axis [min]="0" [ticks]="5" name="y" position="left" type="number"></tlui-axis>
+    <tlui-axis-lines axis="x"></tlui-axis-lines>
+    <tlui-axis-lines axis="y"></tlui-axis-lines>
+    <tlui-data-layer
+      [data]="data"
+      [(hiddenPosition)]="hidden"
+      [groupNames]="['plan', 'predict', 'fact']"
+      axis="y"
+      [caption]="widgetTitle"
+      dynamics="pulse"
+      tluiStackedBars
+    ></tlui-data-layer>
+  </tlui-chart>
+</ng-template>
+
+<ng-template #curveStepAfter>
+  <tlui-chart [height]="height" [width]="width">
+    <tlui-axis [max]="data.length" [primary]="true" name="x" position="bottom" type="number"></tlui-axis>
+    <tlui-axis [min]="0" [ticks]="5" name="y" position="left" type="number"></tlui-axis>
+    <tlui-axis-lines axis="x"></tlui-axis-lines>
+    <tlui-axis-lines axis="y"></tlui-axis-lines>
+    <tlui-data-layer
+      [data]="data"
+      [(hiddenPosition)]="hidden"
+      [groupNames]="['plan', 'predict', 'fact']"
+      axis="y"
+      [caption]="widgetTitle"
+      dynamics="pulse"
+      tluiFullStackedBars
+    ></tlui-data-layer>
+  </tlui-chart>
+</ng-template>

@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+::ng-deep {
+  .blur {
+    opacity: 0.25;
+  }
+
+  .title {
+    font-size: 1em;
+    fill: var(--color-text-optional-color);
+  }
+
+  .gradient-start {
+    stop-color: var(--index-fact-color);
+    stop-opacity: 0.3;
+  }
+
+  .gradient-end {
+    stop-color: transparent;
+    stop-opacity: 0;
+  }
+
+  .bg {
+    fill: var(--color-special-color-white-background);
+  }
+
+  .label {
+    font-size: .8em;
+    fill: var(--color-text-optional-color);
+  }
+
+  .mark {
+    fill: var(--color-color-14);
+  }
+
+  .fact {
+    font-weight: 400;
+    text-anchor: middle;
+    fill: var(--color-index-fact-or-low);
+  }
+
+  .deviation {
+    text-anchor: middle;
+
+    &.grey {
+      fill: var(--text-subscript-color);
+    }
+    &.yellow {
+      fill: var(--index-error-color);
+    }
+    &.green {
+      fill: var(--index-green1-color);
+    }
+  }
+
+  .eng-units {
+    text-anchor: middle;
+    font-size: .8em;
+    fill: var(--color-text-optional-color);
+  }
+}
